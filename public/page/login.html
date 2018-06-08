@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src = '/js/jquery-3.2.1.min.js'></script>
+    <!-- <script src = '/js/bootstrap.min.js'></script> -->
+    <!-- <link rel='stylesheet' href="/css/bootstrap.min.css"/> -->
+    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri" rel="stylesheet">
+    <script src ='/js/login.js'></script>
+    <link rel = 'stylesheet' href = '/css/login.css' />
+    <title>Login</title>
+</head>
+<body>
+    <div class='login-portal'>
+        <div class='login-form'>
+            <div class='account'>
+                <div class="account-profile">
+                    
+                        <!-- <img src="/asset/profile.png" alt=""> -->
+                       
+                </div>
+                
+            </div>
+            <div class='login-page'>
+                <div class='label'>
+                            Login Portal
+                </div>
+            </div>
+            <div class='user-form'>
+                    <form>
+                        <label>Email</label><br>
+                        <input type="email" placeholder="Enter email"><br>
+                        <label>Password</label><br>
+                        <input type="password" placeholder="Enter password"><br>
+                        <input type="submit" value="Login"><br>
+                        <input type="submit" id= "signup" value="Sign up">
+                    </form>
+            </div>
+            <div class='recover-password'>
+                    <span><a href="#">Forgot Password?</a></span> 
+            </div> 
+               
+        </div>
+         
+    </div>
+    <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+    </script>
+</body>
+</html>
