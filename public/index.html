@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src = '/js/jquery-3.2.1.min.js'></script>
+    <script src = '/js/bootstrap.min.js'></script>
+    <link rel='stylesheet' href="/css/bootstrap.min.css"/>
+    <script src ='/js/home.js'></script>
+    <link rel = 'stylesheet' href = '/css/home.css' />
+    <title>Maintenace Tracker</title>
+</head>
+<body>
+    <div class = "container  company-header">
+        <div class = "row">
+            <div class='col-md-12'>
+                <div class='company-head'>
+                    <div class='company-name'>
+                        <span class = 'company-icon'><img src="/asset/horse-icon.png "
+                            alt="company-icon" width="30px" height="30px"/></span><h3><b>EASY FIX</b></h3>
+                    </div>
+                    <nav class='navigation-menu'>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href='#'>Contact Us</a></li>
+                            <li><a href="#">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section>
+                <div class="container company-gallery">
+                        <!-- <div class = "row">
+                            <div class= "col-md-12 company-photo">
+                            </div>
+                        </div> -->
+                        <!-- Slideshow container -->
+                        <div class= "row">
+                        <div class="col-md-12 slideshow-container">
+
+                                <!-- Full-width images with number and caption text -->
+                                <div class="col-md-12 mySlides">
+                                    <img src="/asset/we-1.jpeg" ><span>At Easy Fix, we fix to make you happy,<br>
+                                        your staisfaction is our priority
+                                    </span>
+                                </div>
+                           
+                                <div class="col-md-12 mySlides">
+                                    <img src="/asset/cleaner.jpeg" ><span>We carry out our work To perfection</span>
+                                </div>
+                            
+                                <div class="col-md-12 mySlides">
+                                    <img src="/asset/equipment.jpeg">
+                                    <span>Using cutting edge technology,<br> you are sure to get the best</span>
+                                </div>
+                            
+                                <!-- Next and previous buttons -->
+                                <a class="prev">&#10094;</a>
+                                <a class="next">&#10095;</a>
+                            
+                            <!-- The dots/circles -->
+                            <!-- <div style="text-align:center">
+                                <span class="dot" ></span> 
+                                <span class="dot" ></span> 
+                                <span class="dot"></span> 
+                            </div> -->
+                        </div>    
+                </div>
+                <div class="row short-description">
+                    <div class = 'col-md-12'>
+                            <div class= "col-md-4 welcome">
+    
+                            </div>
+                            <div class="col-md-8 description">
+                                <div class='who-we-are'>
+                                    <span><h3><b>Welcome To EasyFix</b></h3></span>
+                                   <span class='details'> We are a team of brilliant engineers who brings<br>
+                                    maintenance/repairs services to your doorstep. we use cutting edge 
+                                    technology to deliver the highest industrial standard to you</span>
+                                </div>
+                            </div>
+                    </div>
+                        
+                 </div>
+            </div>
+        </section>
+    </main>
+    
+    <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+    </script>
+</body>
+</html>
