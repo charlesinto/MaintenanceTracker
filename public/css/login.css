@@ -1,0 +1,213 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* MY CODE */
+body{
+    background: url('/asset/sky.jpeg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:100vh;
+    /* position: fixed; */
+}
+div.login-portal{
+    width:50%;
+    margin:0 auto;
+   
+}
+div.login-form {
+    height: 400px;
+    background: #566;
+    opacity: 0.8;
+    padding-top: 30px;
+    box-sizing: border-box;
+    border: 2px solid #f3f8f5;
+    margin-top: 100px;
+    box-sizing: border-box;
+    border-radius: 10px 10px;
+}
+div.account{
+    margin: 0 auto;
+    /* height: 100px; */
+    width: 9%;
+    /* margin-left: 60px; */
+}
+div.account-profile{
+    background:url('/asset/profile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:40px;
+    height: 40px;
+}
+div.login-page {
+    width: 25%;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+div.label{
+    color: #fff;
+    font-family: 'Hind Siliguri', sans-serif;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 900;
+}
+div.user-form{
+   width: 100%;
+   margin-left: 20px;
+}
+label{
+    color: #fff;
+    font-family: 'Hind Siliguri', sans-serif;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 900;
+    padding:10px;
+}
+input[type=email], input[type=password]{
+    width:80%;
+    margin-top:10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #000;
+    padding:10px;
+    background: #f3f8f5;
+    opacity: 0.8;
+}
+input[type = email]:focus,input[type = password]:focus{
+    outline:none;
+}
+input[type=submit]{
+    box-sizing: border-box;
+    width:80%;
+    padding:10px;
+    background: #368bc6;
+    text-transform: uppercase;
+    font-family: 'Hind Siliguri', sans-serif;
+    color:#fff;
+    margin-bottom: 10px;
+    border-radius:10px 10px;
+}
+input[type=submit]#signup{
+    background: #e6dbdb00;
+}
+div.recover-password{
+    margin-left: 20px;
+}
+@media screen and (min-width:700px){
+    div.recover-password{
+        margin:0 auto;
+        width:40%;
+        
+    }
+}
+div.recover-password span{
+    padding-top:10px;
+
+}
+span a{
+    text-decoration: none;
+    text-align:center;
+    color:#b4e2db;
+    font-family: 'Hind Siliguri', sans-serif;
+    text-transform: capitalize;
+}
