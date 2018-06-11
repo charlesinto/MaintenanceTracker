@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src = '/js/jquery-3.2.1.min.js'></script>
+    <script src = '/js/bootstrap.min.js'></script>
+    <link rel='stylesheet' href="/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri" rel="stylesheet">
+    <script src ='/js/admin_page.js'></script>
+    <link rel = 'stylesheet' href = '/css/admin_page.css' />
+    <title>Maintenace Tracker</title>
+</head>
+<body>
+    <div class='body'>
+        <div class="menu mobile">
+            <nav class='nav-bar'><img id='m-icon'src='/asset/menu-icon.png' width="30px", height="30px" alt="menu"/><span class='m-menu'>Menu</span>
+                    <ul class='mobile-menu'>
+                        <!-- <li class="active user-option"><a href="#makeRequest">Make Request</a></li>-->
+                        <li class="user-option"><a href="#viewRequest">Home</a></li> 
+                        <li class="user-option"><a href="#">Notification</a></li>
+                        <!-- <li class='tools'><a href="#">logout</a></li>
+                        <li class='tools' id='user'><a href="#">welcome</a></li> -->
+
+                        
+                    </ul>
+                    
+                </nav>
+                <nav class='user-tools'>
+                        <ul class='m-tools'>
+                                <li class='tools'><a href="#">logout</a></li>
+                                <li class='tools' id='user'><a href="#">welcome</a></li>
+                        </ul>
+                </nav>
+        </div>
+        <div class="menu desktop">
+            <nav class='nav-bar'>
+                <ul>
+                    <!-- <li class="active user-option"><a href="#makeRequest">Make Request</a></li>
+                    <li class="user-option"><a href="#viewRequest">View Request</a></li> -->
+                    <li class='company-name'>Easy Fix</li>
+                    <li class="user-option"><a href="#">Notification</a></li>
+                    <li class='tools'><a href="#">logout</a></li>
+                    <li class='tools' id='user'><a href="#"></a>welcome</a></li>
+
+                    
+                </ul>
+            </nav>
+        </div>
+        <div class="make-request" >
+            <div class='menu-item view-request' id='viewRequest' style='height: 300px'>
+                <table class='mobile-table'>
+                    <thead>
+                        <tr>
+                            <th>s/n</th>
+                            <th>Product</th>
+                            <th>Action</th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tbody>
+                </table>
+                <table class='desktop-table'>
+                        <thead>
+                            <tr>
+                                <th>s/n</th>
+                                <th>Product</th>
+                                <th>Complaints</th>
+                                <th>Date Created</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            
+                        </thead>
+                        <tbody>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+    </script>
+</body>
+</html>
