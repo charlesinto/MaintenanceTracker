@@ -11,9 +11,12 @@ toogelMenu = function(){
     //    e.preventDefualt();
        let clicked_list_item = $(this).first()
        clicked_div_id = clicked_list_item[0].firstChild.href.split('#')[1]
-       $('.menu-item').hide();
-    //    $('li.active').removeClass('active')
-    //    $(this).addClass('active')
-       $('div#'+ clicked_div_id).show();
+       if(typeof clicked_div_id !== undefined && clicked_div_id !== ''){
+            $('.menu-item').hide();
+            //    $('li.active').removeClass('active')
+            //    $(this).addClass('active')
+            $('div#'+ clicked_div_id).show();
+       }
+      
    })
 }

@@ -141,9 +141,9 @@ ul.mobile-menu li:hover{
     background: rgba(17, 194, 232, 0.99);
     
 }
-li.active{
+/* li.active{
     background: rgba(17, 194, 232, 0.99);
-}
+} */
 div.mobile nav.nav-bar ul li a{
     color: #111;
     margin-left: 4%;
@@ -213,9 +213,6 @@ nav.user-tools ul li{
         padding-bottom: 1.4%;
     }
     div.desktop nav.nav-bar ul li:hover{
-        background:#555;
-    }
-    li.active{
         background:#555;
     }
     div.desktop nav.nav-bar ul li:hover a{
