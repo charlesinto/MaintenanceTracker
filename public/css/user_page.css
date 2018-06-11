@@ -1,0 +1,307 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/*MY CODE */
+
+body{
+    background: #f3f3f3;
+    height: 100%;
+}
+div.body{
+    background: url('/asset/user-tools.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    width:100%;
+    height:100vh;
+}
+div.menu{
+    position: absolute;
+    width:100%;
+    height: 50px;
+    background: #fff;
+}
+/* span.m-menu{
+    margin-top: 4%;
+    margin-left: 5%;
+} */
+img#m-icon{
+    margin-left: 2%;
+}
+
+ul.mobile-menu li{
+    border:2px solid #444;
+    background: #fff;
+    width:150px;
+    line-height: 207%;
+    height: 40px;
+    color:#111;
+}
+ul.mobile-menu li:hover{
+    background: rgba(17, 194, 232, 0.99);
+    
+}
+li.active{
+    background: rgba(17, 194, 232, 0.99);
+}
+div.mobile nav.nav-bar ul li a{
+    color: #111;
+    margin-left: 4%;
+}
+
+div.make-request{
+    height: fit-content;
+    width:80%;
+    position: absolute;
+    /* top: 30px;
+    left:30px; */
+    margin: 20% 9%;
+    background: #fff;
+    z-index: 1;
+    box-sizing: border-box;
+    border-radius: 3px 3px;
+}
+li a {
+    text-decoration: none;
+}
+
+div.desktop{
+    display:none;
+}
+div.mobile nav.nav-bar ul.mobile-menu{
+    display:none;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+div.mobile nav.nav-bar:hover ul.mobile-menu{
+    display:block;
+    position: absolute;
+    /* position: relative;
+    top:35px;
+    left:10px; */
+    z-index: 2;
+}
+
+nav.user-tools ul li{
+    float: right;
+    margin-left: 5%;
+    margin-right: 2%;
+}
+@media screen and (min-width:700px){
+        div.desktop{
+            display:block;
+        }
+        div.mobile{
+            display: none;
+        }
+    div.desktop nav{
+        margin:0 auto;
+    }
+    div.desktop nav.nav-bar ul li{
+        /* margin-top:15px; */
+    }
+    div.desktop nav.nav-bar ul li a{
+        display:inline-block;
+        text-decoration: none;
+    }
+    div.desktop nav.nav-bar ul li{
+        float: left;
+        padding-left: 1%;
+        padding-right: 1%;
+        padding-top: 2%;
+        padding-bottom: 1.4%;
+    }
+    div.desktop nav.nav-bar ul li:hover{
+        background:#555;
+    }
+    li.active{
+        background:#555;
+    }
+    div.desktop nav.nav-bar ul li:hover a{
+        color:    #2cf355a8;
+    }
+    div.desktop nav.nav-bar ul li.tools{
+        float: right;
+        margin-left: 10px;
+        margin-right:10px;
+    }
+    
+    div.make-request{
+        height: fit-content;
+        width:80%;
+        position: absolute;
+         margin: 9% 9%;
+        background: #fff;
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width:800px){
+    div.desktop nav.nav-bar ul li{
+        padding-bottom: 3%;
+    }
+}
+label{
+    margin: 2% 7%;
+}
+textarea,select, input[type=submit]{
+    display: inline-block;
+    width: 80%;
+    margin: 4% 7%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea{
+    height:50px;
+    overflow: auto;
+}
+input[type=submit]{
+    text-transform: uppercase;
+    color:#fff;
+    background: #1a6bfbf0;
+    padding: 10px;
+    margin-bottom: 10px
+}
+@media screen and (min-width:1000px){
+    textarea,select, input[type=submit]{
+        margin: 1% 7%;
+    }
+    label{
+        margin: 2% 7%;
+    }
+}
+div.view-request{
+    width:80%;
+    margin:21px auto;
+}
+table.desktop-table{
+    display: none;
+}
+table.mobile-table, td, th {    
+    border: 1px solid #ddd;
+    /* table-layout: fixed; */
+    text-align: center;
+    vertical-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+    width: 10%;
+}
+
+@media  screen and (min-width:1000px){
+    table.desktop-table{
+        display:block;
+    }
+    table.mobile-table{
+        display: none;
+    }
+}
