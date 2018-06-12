@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src = '/js/jquery-3.2.1.min.js'></script>
+    <script src = '/js/bootstrap.min.js'></script>
+    <link rel='stylesheet' href="/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri" rel="stylesheet">
+    <script src ='/js/signup.js'></script>
+    <link rel = 'stylesheet' href = '/css/signup.css' />
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class = 'signup-form'>
+        <form>
+            <label>First Name</label>
+            <input type='text' name='fname' placeholder="Enter first Name">
+            <label>Last Name</label>
+            <input type='text' name='lname' placeholder="Enter last Name">
+            <label>Phone Number</label>
+            <input type='text' name='pnumber' placeholder="Enter phone number">
+            <label>Email</label>
+            <input type='email' name='email' placeholder="Enter email">
+            <label>Password</label>
+            <input type='password' name='pwd' placeholder="Enter Password">
+            <label>Confirm Password</label>
+            <input type='password' name='pwd' placeholder="Enter Password">
+            <input type='submit' value='Sign Up'>
+        </form>
+    </div>
+    <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+    </script>
+</body>
+</html>

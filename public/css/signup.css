@@ -1,0 +1,47 @@
+@import url('/css/login.css');
+/* body{
+    position: fixed;
+} */
+div.signup-form{
+    margin: 14% auto;
+    background: #fff;
+    width:80%;
+    height:fit-content;
+    box-sizing: border-box;
+    border-radius: 4px 4px;
+}
+input[type=password],input[type=email],input[type=text], input[type=submit]{
+    display: inline-block;
+    width: 80%;
+    display: inline-block;
+    margin: 1% 12%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding:7px 7px !important;
+    box-sizing: border-box;
+}
+label {
+    color: #000;
+    margin: -1% 9%;
+}
+input[type=submit]{
+    margin-top:10px !important;
+    margin-bottom: 10px !important;
+}
+@media screen and (min-width:700px){
+    input[type=password],input[type=email],input[type=text], input[type=submit]{
+        margin: 0% 12%;
+    }
+    label {
+        margin: 1% 11%;
+    }
+    div.signup-form{
+       margin: 6% auto;
+    }
+}
+@media screen and (min-width:1200px){
+    div.signup-form{
+        width:50%;
+        margin: 3% auto;
+     }
+}
