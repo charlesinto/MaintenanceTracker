@@ -250,6 +250,7 @@ textarea,select, input[type=submit]{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    height:fit-content
 }
 textarea{
     height:50px;
