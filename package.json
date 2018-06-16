@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=DEVELOPMENT nodemon ./server/index.js --exec babel-node --require dotenv/config",
-    "start": "npm run build && node ./dist/index.js",
-    "build": "cross-env NODE_ENV=PRODUCTION babel server -d dist --require dotenv/config",
-    "test": "cross-env NODE_ENV=TEST mocha  --require dotenv/config --compilers js:babel-core/register server/test/test.js --exit"
+    "start:dev": "set NODE_ENV=DEVELOPMENT&& nodemon ./server/index.js --exec babel-node --require dotenv/config",
+    "start": "set NODE_ENV=PRODUCTION&& npm run build && node ./dist/index.js",
+    "build": "babel server -d dist --require dotenv/config",
+    "test": "set NODE_ENV=TEST&& mocha server/test/test.js --compilers js:babel-core/register --exit"
   },
   "repository": {
     "type": "git",
@@ -22,13 +22,19 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "cross-env": "^5.1.6",
+    "bcrypt": "^2.0.1",
+    "cross-env": "^5.2.0",
     "dotenv": "^6.0.0",
     "eslint": "^4.19.1",
+    "jsonwebtoken": "^8.3.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.3",
+    "validator": "^10.3.0"
   },
   "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "express": "^4.16.3",
     "http": "0.0.0",
     "path": "^0.12.7",
