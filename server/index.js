@@ -3,19 +3,21 @@ import socket from 'socket.io';
 import bodyParser from 'body-parser';
 import http from 'http';
 import path from 'path';
+import route from './routes/index'
+import loginSignUp from './routes/loginSignup'
 require('dotenv').config();
 
 const apiVersion = express.Router();
 const app = express();
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
-app.get('/', (req,res)=>{
-    res.sendFile(__dirname + '/index.html');
-});
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use('/', route);
+
+app.use('/api/v1/auth', loginSignUp);
 //create server;
 let port = process.env.PORT || 5000;
 let server = http.createServer(app)
@@ -26,4 +28,4 @@ io.on('connection', (socket)=>{
 
 server.listen(port,()=>{console.log(`server is listening on port ${port}`)});
 
-export default app;
+export default server;
