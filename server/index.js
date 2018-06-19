@@ -6,6 +6,7 @@ import path from 'path';
 import route from './routes/index'
 import userRoute from './routes/Uers'
 import loginSignUp from './routes/loginSignup'
+import adminRoute from './routes/Admin'
 require('dotenv').config();
 
 const apiVersion = express.Router();
@@ -22,6 +23,9 @@ app.use('/api/v1/auth', loginSignUp);
 //user routes
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/user', userRoute);
+
+//admin routes 
+app.use('/api/v1/requests', adminRoute);
 //create server;
 let port = process.env.PORT || 5000;
 let server = http.createServer(app)
