@@ -11,8 +11,62 @@ import bcrypt from 'bcrypt';
 let router = express.Router();
 
 
-router.post('/login',(req,res,next)=>{
-   next();
+router.post('/login',(req,res)=>{
+    let request = trimSpace(req.body); 
+    //validate if the request has the keys['email','phonenumber']] 
+    if(!validateKey(request, ['email','password'])){
+        res.statusCode = 400;
+        res.setHeader('content-type', 'application/json');
+        return res.json({message:'Bad Request,one or more keys is missing'});
+    }
+    if(inputValidate(res,request)){
+        let sql = 'SELECT * FROM BASE_USERS WHERE email = $1';
+        executeQuery(sql,[request.email])
+        .then((result)=>{
+            if(result.rowCount > 0){
+                if(bcrypt.compareSync(request.password,result.rows[0].password)){
+                    assignToken({id:result.rows[0].id,firstname:result.rows[0].firstname,lastname:result.rows[0].lastname,role_id:1,email:result.rows[0].email})
+                    .then((token)=>{
+                        res.statusCode = 200;
+                        res.setHeader('content-type', 'application/json');
+                        return res.json({
+                            message:`welcome`,
+                            token,
+                            user:`${result.rows[0].firstname} ${result.rows[0].lastname}`
+                        }) 
+                    })
+                    .catch((err)=>{
+                        res.statusCode = 403;
+                        res.setHeader('content-type', 'application/json');
+                        res.json({
+                            message:'couldnt perform authentication',
+                            err
+                        })
+                    })
+                }else{
+                    res.statusCode = 404;
+                    res.setHeader('content-type', 'application/json');
+                    res.json({
+                        message:'Wrong email or password',
+                    })
+                }
+            }else{
+                res.statusCode = 404;
+                res.setHeader('content-type', 'application/json');
+                res.json({
+                    message:'Wrong email or password',
+                })
+            }
+        })
+        .catch((err)=>{
+            res.statusCode = 500;
+            res.setHeader('content-type', 'application/json');
+            res.json({
+                message:'Server error or service unavailabe',
+                err
+            })
+        })
+    }
 })
 router.post('/signup',(req,res)=>{
     //trim the request and trailling and leading spaces

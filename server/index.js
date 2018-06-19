@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import path from 'path';
 import route from './routes/index'
+import userRoute from './routes/Uers'
 import loginSignUp from './routes/loginSignup'
 require('dotenv').config();
 
@@ -16,8 +17,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', route);
-
+//login and sign up route
 app.use('/api/v1/auth', loginSignUp);
+//user routes
+app.use('/api/v1/users', userRoute);
+app.use('/api/v1/user', userRoute);
 //create server;
 let port = process.env.PORT || 5000;
 let server = http.createServer(app)
