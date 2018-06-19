@@ -5,6 +5,7 @@ let executeQuery = function(sql, params){
         connectToDb().then((client,done)=>{
             if(typeof params !== undefined && params.length > 0){
                 client.query(sql,params,(err,result)=>{
+                    client.release();
                     if(err){
                         console.log('err1',err)
                         reject(err);
@@ -12,8 +13,10 @@ let executeQuery = function(sql, params){
                         resolve(result)
                     }
                 })
+                
             }else{
                 client.query(sql,(err,result)=>{
+                    client.release();
                     if(err){
                         console.log('err1',err)
                         reject(err);
@@ -23,7 +26,6 @@ let executeQuery = function(sql, params){
                 })
             }   
                 
-            
         })
         .catch((err)=>{
                 console.log('err2',err)

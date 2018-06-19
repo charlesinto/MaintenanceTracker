@@ -145,18 +145,23 @@ label{
     padding:10px;
 }
 div.recover-password{
+    width:80%;
     margin:2% auto;
 }
-@media screen and (min-width:700px){
+/* @media screen and (min-width:700px){
     div.recover-password{
         margin:2% auto;
         width:40%;
         
     }
-}
+} */
 div.recover-password span{
     padding-top:10px;
 
+}
+span{
+    width:100%;
+    margin-left: 30px;
 }
 span a{
     text-decoration: none;
@@ -165,7 +170,12 @@ span a{
     font-family: 'Hind Siliguri', sans-serif;
     text-transform: capitalize;
     font-size: 1.3em;
-    margin: 0% 24%;
+    /* margin: 0% 22%; */
+}
+@media screen and (max-width:700px){
+    span a{
+        /* margin: 0% 30%; */
+    }
 }
 div.login-portal{
     margin: 14% auto;
@@ -217,5 +227,8 @@ input[type=submit]#signup{
      }
      div.label{
         margin: 3% calc(43.8%);
+    }
+    span a{
+        /* margin: 0% 18%; */
     }
 }

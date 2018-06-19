@@ -250,7 +250,7 @@ textarea,select, input[type=submit]{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    height:fit-content
+    /* height:fit-content */
 }
 textarea{
     height:50px;
@@ -302,4 +302,14 @@ th, td {
     table.mobile-table{
         display: none;
     }
+}
+@media screen and (min-width:1200px){
+    div.make-request{
+        width:70%;
+        margin: 10% 15%;
+        
+     }
+     /* div.label{
+        margin: 3% calc(43.8%);
+    } */
 }
