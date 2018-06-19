@@ -20,6 +20,7 @@ router.get('/requests', verifyToken,(req,res)=>{
             res.setHeader('content-type', 'application/json');
             if(result.rowCount > 0){
                 res.json({
+                    message:`operation successful`,
                     requests:result.rows
                 })
             }else{
@@ -51,6 +52,7 @@ router.get('/request/:id', verifyToken,(req,res)=>{
             res.setHeader('content-type', 'application/json');
             if(result.rowCount > 0){
                 res.json({
+                    message:`operation successful`,
                     requests:result.rows
                 })
             }else{
@@ -68,6 +70,37 @@ router.get('/request/:id', verifyToken,(req,res)=>{
             })
         })
 
+    }
+})
+router.post('/request',verifyToken,(req,res)=>{
+    if(typeof req.token !== undefined && req.token !== ''){
+        let user = req.token;
+        let request = trimSpace(req.body);
+        if(!validateKey(request,['item', 'itemcategory', 'requestcategory', 'complaints'])){
+            res.statusCode = 400;
+            res.setHeader('content-type', 'application/json');
+            return res.json({message:'Bad Request,one or more keys is missing'});
+        }
+        if(inputValidate(res, request)){
+            let sql = 'INSERT INTO BASE_REQUEST(requestcategory,item, itemcategory,complaints, user_id, status, datecreated) values ($1,$2,$3,$4,$5,$6,$7)';
+            executeQuery(sql,[request.requestcategory,request.item,request.itemcategory, request.complaints,user.id,'PENDING','NOW()'])
+            .then((result)=>{
+                res.statusCode = 201;
+                        res.setHeader('content-type', 'application/json');
+                        return res.json({
+                            message:`operation successful`,
+                            request
+                        }) 
+            })
+            .catch((err)=>{
+                res.statusCode = 400;
+                res.setHeader('content-type', 'application/json');
+                res.json({
+                    message:'couldnt perform action',
+                    err
+                })
+            })
+        }
     }
 })
 

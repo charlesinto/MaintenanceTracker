@@ -17,6 +17,13 @@ let user = {
      "password":" 3450  ",
      "phonenumber":"   08163113450"
 }
+let request = {
+	"item":"laptop",
+	"itemcategory":"electronics",
+	"requestcategory":"repairs",
+	"complaints":"faulty keyboard"
+	
+}
 describe('login/signup', function(){
     describe('It should sign up user',function(){
         this.timeout(20000)
@@ -118,10 +125,10 @@ describe('login/signup', function(){
                 done();
             })
         })
-        it('response.message to be welcome', function(done){
+        it('response.message to be operation successful', function(done){
             chai.request(app).get('/api/v1/users/requests').set("authorization", loggedInToken).end(function(err,res){
             
-                expect(res.body.message).to.equal("No record found")
+                expect(res.body.message).to.equal("operation successful")
                 done();
             })
         })
@@ -167,10 +174,10 @@ describe('login/signup', function(){
                 done();
             })
         })
-        it('response.message to be welcome', function(done){
+        it('response.message to be operation successful', function(done){
             chai.request(app).get('/api/v1/user/request/1').set("authorization", loggedInToken).end(function(err,res){
             
-                expect(res.body.message).to.equal("No record found")
+                expect(res.body.message).to.equal("operation successful")
                 done();
             })
         })
@@ -182,7 +189,63 @@ describe('login/signup', function(){
             })
         })
         
-    })      
+    })
+    describe('it should create a new request',function(){
+        this.timeout(20000);
+        it('response should have a status of 201',(done)=>{
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+                
+                expect(res).to.have.status(201);
+                done();
+            })
+        })
+        it('response should be an object', function(done){
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response.text to be a string', function(done){
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+                expect(res.text).to.be.string
+                done();
+            })
+        })
+        it('response to have property message', function(done){
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+                expect(res.body).to.have.property('message');
+                done();
+            })
+        })
+        it('response to have property requests', function(done){
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+                expect(res.body).to.have.property('request');
+                done();
+            })
+        })
+        it('response.message to be a string', function(done){
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+            
+                expect(res.body.message).to.be.string;
+                done();
+            })
+        })
+        it('response.message to be operation successful', function(done){
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+            
+                expect(res.body.message).to.equal("operation successful")
+                done();
+            })
+        })
+        it('request should be an object', function(done){
+            chai.request(app).post('/api/v1/user/request').set('authorization', loggedInToken).send(request).end(function(err,res){
+            
+                expect(res.body.request).to.be.an('object')
+                done();
+            })
+        })
+        
+    })       
 }) 
 
     
