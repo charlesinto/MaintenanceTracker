@@ -27,7 +27,7 @@ let request = {
 let updateRequest = {
     "complaints":"faulty speaker"
 }
-describe('login/signup', function(){
+describe('Test all api end points', function(){
     describe('It should sign up user',function(){
         this.timeout(20000)
         it('response should have a status of 406',(done)=>{
@@ -277,13 +277,13 @@ describe('login/signup', function(){
             })
         })
         it('response to have property requests', function(done){
-            chai.request(app).put('/api/v1/user/request/3').set('authorization', loggedInToken).send(updateRequest).end(function(err,res){
+            chai.request(app).put('/api/v1/user/request/40').set('authorization', loggedInToken).send(updateRequest).end(function(err,res){
                 expect(res.body).to.have.property('request');
                 done();
             })
         })
         it('response.message to be a string', function(done){
-            chai.request(app).put('/api/v1/user/request/7').set('authorization', loggedInToken).send(updateRequest).end(function(err,res){
+            chai.request(app).put('/api/v1/user/request/41').set('authorization', loggedInToken).send(updateRequest).end(function(err,res){
             
                 expect(res.body.message).to.be.string;
                 done();
@@ -297,7 +297,7 @@ describe('login/signup', function(){
             })
         })
         it('request should be an array', function(done){
-            chai.request(app).put('/api/v1/user/request/10').set('authorization', loggedInToken).send(updateRequest).end(function(err,res){
+            chai.request(app).put('/api/v1/user/request/41').set('authorization', loggedInToken).send(updateRequest).end(function(err,res){
             
                 expect(res.body.request).to.be.an('array')
                 done();
@@ -360,7 +360,120 @@ describe('login/signup', function(){
             })
         })
         
-    })          
+    })
+    describe('it should resolve a request',function(){
+        this.timeout(20000);
+        it('response should have a status of 200',(done)=>{
+            chai.request(app).put('/api/v1/requests/1/resolve').set('authorization', loggedInToken).end(function(err,res){
+                
+                expect(res).to.have.status(200);
+                done();
+            })
+        })
+        it('response should be an object', function(done){
+            chai.request(app).put('/api/v1/requests/1/resolve').set('authorization', loggedInToken).end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response.text to be a string', function(done){
+            chai.request(app).put('/api/v1/requests/2/resolve').set('authorization', loggedInToken).end(function(err,res){
+                expect(res.text).to.be.string
+                done();
+            })
+        })
+        it('response to have property message', function(done){
+            chai.request(app).put('/api/v1/requests/3/resolve').set('authorization', loggedInToken).end(function(err,res){
+                expect(res.body).to.have.property('message');
+                done();
+            })
+        })
+        it('response to have property request', function(done){
+            chai.request(app).put('/api/v1/requests/5/resolve').set('authorization', loggedInToken).end(function(err,res){
+                expect(res.body).to.have.property('request');
+                done();
+            })
+        })
+        it('response.message to be a string', function(done){
+            chai.request(app).put('/api/v1/requests/6/resolve').set('authorization', loggedInToken).end(function(err,res){
+            
+                expect(res.body.message).to.be.string;
+                done();
+            })
+        })
+        it('response.message to be operation successful', function(done){
+            chai.request(app).put('/api/v1/requests/9/resolve').set('authorization', loggedInToken).end(function(err,res){
+            
+                expect(res.body.message).to.equal("operation successful")
+                done();
+            })
+        })
+        it('request should be an array', function(done){
+            chai.request(app).put('/api/v1/requests/10/resolve').set('authorization', loggedInToken).end(function(err,res){
+            
+                expect(res.body.request).to.be.an('array')
+                done();
+            })
+        })
+        
+    })
+    describe('it should reject a request',function(){
+        this.timeout(20000);
+        it('response should have a status of 200',(done)=>{
+            chai.request(app).put('/api/v1/requests/30/reject').set('authorization', loggedInToken).end(function(err,res){
+                
+                expect(res).to.have.status(200);
+                done();
+            })
+        })
+        it('response should be an object', function(done){
+            chai.request(app).put('/api/v1/requests/29/reject').set('authorization', loggedInToken).end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response.text to be a string', function(done){
+            chai.request(app).put('/api/v1/requests/28/reject').set('authorization', loggedInToken).end(function(err,res){
+                expect(res.text).to.be.string
+                done();
+            })
+        })
+        it('response to have property message', function(done){
+            chai.request(app).put('/api/v1/requests/27/reject').set('authorization', loggedInToken).end(function(err,res){
+                expect(res.body).to.have.property('message');
+                done();
+            })
+        })
+        it('response to have property request', function(done){
+            chai.request(app).put('/api/v1/requests/26/reject').set('authorization', loggedInToken).end(function(err,res){
+                expect(res.body).to.have.property('request');
+                done();
+            })
+        })
+        it('response.message to be a string', function(done){
+            chai.request(app).put('/api/v1/requests/25/reject').set('authorization', loggedInToken).end(function(err,res){
+            
+                expect(res.body.message).to.be.string;
+                done();
+            })
+        })
+        it('response.message to be operation successful', function(done){
+            chai.request(app).put('/api/v1/requests/24/reject').set('authorization', loggedInToken).end(function(err,res){
+            
+                expect(res.body.message).to.equal("operation successful")
+                done();
+            })
+        })
+        it('request should be an array', function(done){
+            chai.request(app).put('/api/v1/requests/23/reject').set('authorization', loggedInToken).end(function(err,res){
+            
+                expect(res.body.request).to.be.an('array')
+                done();
+            })
+        })
+        
+    })
+              
 }) 
 
     

@@ -1,8 +1,8 @@
 import Validator from 'validator';
 
 let inputValidator = function(res, obj){
-
-    if(typeof obj !== undefined && obj !== '' && typeof obj === 'object' && obj.length === undefined){
+    if(typeof obj !== "undefined" && obj !== '' && typeof obj === 'object' && typeof obj.length === "undefined"){
+        
         let keys = Object.keys(obj)
         for(let i = 0; i< keys.length; i++){
             if(keys[i] === 'firstname' || keys[i] === 'lastname'){
@@ -15,7 +15,7 @@ let inputValidator = function(res, obj){
                 
             }
             if(keys[i] === 'phonenumber'){
-                if( typeof obj[keys[i]] === undefined || obj[keys[i]] === '' || !Validator.isNumeric(obj[keys[i]]) || obj[keys[i]].length< 11){
+                if( typeof obj[keys[i]] === "undefined" || obj[keys[i]] === '' || !Validator.isNumeric(obj[keys[i]]) || obj[keys[i]].length< 11){
                     res.statusCode = 400;
                     res.setHeader('content-type', 'application/json');
                     res.json({message:`${keys[i]}  required and must be numbers of 11 digits`});
@@ -31,7 +31,7 @@ let inputValidator = function(res, obj){
                     return false;
                 }
             }
-           else if( typeof obj[keys[i]] === undefined || obj[keys[i]] === ''){
+           else if( typeof obj[keys[i]] === "undefined" || obj[keys[i]] === ''){
                 res.statusCode = 400;
                 res.setHeader('content-type', 'application/json');
                 res.json({message:`${keys[i]} required`});

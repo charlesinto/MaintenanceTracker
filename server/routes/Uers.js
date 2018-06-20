@@ -11,7 +11,7 @@ import bcrypt from 'bcrypt';
 let router = express.Router();
 
 router.get('/requests', verifyToken,(req,res)=>{
-    if(typeof req.token !== undefined){
+    if(typeof req.token !== "undefined"){
         let loggedInUser = req.token;
         let sql = 'SELECT * FROM BASE_REQUEST WHERE user_id = $1';
         executeQuery(sql,[loggedInUser.id])
@@ -43,7 +43,7 @@ router.get('/requests', verifyToken,(req,res)=>{
     }
 })
 router.get('/request/:id', verifyToken,(req,res)=>{
-    if(typeof req.params !== undefined && req.params !== ''){
+    if(typeof req.params !== "undefined" && req.params !== ''){
         let request_id = parseInt(req.params.id);
         let sql = 'SELECT * FROM BASE_REQUEST WHERE id = $1';
         executeQuery(sql,[request_id])
@@ -73,7 +73,7 @@ router.get('/request/:id', verifyToken,(req,res)=>{
     }
 })
 router.post('/request',verifyToken,(req,res)=>{
-    if(typeof req.token !== undefined && req.token !== ''){
+    if(typeof req.token !== "undefined" && req.token !== ''){
         let user = req.token;
         let request = trimSpace(req.body);
         if(!validateKey(request,['item', 'itemcategory', 'requestcategory', 'complaints'])){
@@ -104,7 +104,7 @@ router.post('/request',verifyToken,(req,res)=>{
     }
 })
 router.put('/request/:id',verifyToken,(req,res)=>{
-    if(typeof req.token !== undefined){
+    if(typeof req.token !== "undefined"){
         let user = req.token;
         let request = trimSpace(req.body);
         if(!validateKey(request,['complaints'])){
@@ -114,7 +114,7 @@ router.put('/request/:id',verifyToken,(req,res)=>{
         }
         if(inputValidate(res,request)){
             let request_id = parseInt(req.params.id);
-            if(typeof request_id !== undefined && request_id !== ''){
+            if(typeof request_id !== "undefined" && request_id !== ''){
                 let sql = 'SELECT * FROM BASE_REQUEST WHERE id = $1';
                 executeQuery(sql,[request_id])
                 .then((result)=>{
