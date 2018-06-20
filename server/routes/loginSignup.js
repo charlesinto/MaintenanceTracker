@@ -73,6 +73,7 @@ router.post('/signup',(req,res)=>{
     let request = trimSpace(req.body); 
     //validate if the request has the keys['firstname','lastname','email','password','phonenumber']] 
     if(!validateKey(request, ['firstname','lastname','email','password','phonenumber'])){
+        
         res.statusCode = 400;
         res.setHeader('content-type', 'application/json');
         return res.json({message:'Bad Request,one or more keys is missing'});
