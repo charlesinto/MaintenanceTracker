@@ -167,4 +167,67 @@ router.put('/:id/reject', verifyToken, (req,res)=>{
         })
     }
 })
+router.put('/:id/approve', verifyToken, (req,res)=>{
+    if(typeof req.token !== "undefined" && (typeof req.params.id !== "undefined" && req.params.id !== '')){
+        let user = req.token;
+        let request_id = parseInt(req.params.id);
+        let sql = 'SELECT * FROM BASE_REQUEST WHERE ID = $1';
+        executeQuery(sql,[request_id])
+        .then((result)=>{
+            if(result.rowCount > 0){
+                if(result.rows[0].status !== 'PENDING'){
+                    res.statusCode = 406;
+                    res.setHeader('content-type','application/json');
+                    return res.json({
+                        message:'can\'t update status'
+                    })
+                }
+                let sql = 'UPDATE BASE_REQUEST SET status = $1 where id = $2';
+                executeQuery(sql,['APPROVED', request_id])
+                .then((result)=>{
+                    let sql = 'SELECT * FROM BASE_REQUEST WHERE ID = $1';
+                    executeQuery(sql,[request_id])
+                    .then((result)=>{
+                        res.statusCode = 200;
+                        res.setHeader('content-type','application/json');
+                        res.json({
+                            message:'operation successful',
+                            request:result.rows
+                        })
+                    })
+                    .catch((err)=>{
+                        res.statusCode = 444;
+                        res.setHeader('content-type','application/json');
+                        res.json({
+                            message:'operation failed',
+                            err
+                        })
+                    }) 
+                })
+                .catch((err)=>{
+                    res.statusCode = 444;
+                    res.setHeader('content-type','application/json');
+                    res.json({
+                        message:'operation failed',
+                        err
+                    })
+                })
+            }else{
+                res.statusCode = 404;
+                res.setHeader('content-type','application/json');
+                res.json({
+                    message:'No record found'
+                }) 
+            }
+        })
+        .catch((err)=>{
+            res.statusCode = 444;
+            res.setHeader('content-type','application/json');
+            res.json({
+                message:'operation failed',
+                err
+            })
+        })
+    }
+})
 export default router;
