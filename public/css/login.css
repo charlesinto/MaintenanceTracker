@@ -105,9 +105,32 @@ input, select {
 body{
     background: url('/asset/sky.jpeg');
     background-size:cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height:100vh;
     /* position: fixed; */
+}
+div.login-form{
+    position: absolute;
+    background: #fff;
+    border-radius: 4px;
+    width: 65%;
+    left: calc(calc(100vw - 65%) /2 );
+    z-index: 1;
+}
+div.blockUi{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background: rgba(0,0,0,.075);
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+}
+img#blockUi{
+    position: absolute;
+    /* top: calc(calc(100vh - 200px) / 2); */
+    margin-top:50px;
+    left: calc(calc(100vw - 200px) / 2);
 }
 div.account-profile{
     background: url(/asset/profile.png);
@@ -224,6 +247,10 @@ input[type=submit]#signup{
         width:50%;
         margin: 3% auto;
         
+     }
+     div.login-form{
+        width: 50%;
+        left: calc(calc(100vw - 50%) /2 );
      }
      div.label{
         margin: 3% calc(43.8%);

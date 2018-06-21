@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if(!localStorage.getItem('token')){
+            location.href = window.origin + '/page/login.html'
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,6 +14,7 @@
     <link rel='stylesheet' href="/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri" rel="stylesheet">
     <script src ='/js/user_page.js'></script>
+    
     <link rel = 'stylesheet' href = '/css/user_page.css' />
     <title>Maintenace Tracker</title>
 </head>
@@ -29,8 +35,8 @@
                         </nav>
                         <nav class='user-tools'>
                                 <ul class='m-tools'>
-                                        <li class='tools'><a href="#">logout</a></li>
-                                        <li class='tools' id='user'><a href="#">welcome</a></li>
+                                        <li class='tools'><a href="#" id='logout'>logout</a></li>
+                                        <li class='tools' id='user'><a href="#"><span id= 'whologgedIn'></span></a></li>
                                 </ul>
                         </nav>
             </div>
@@ -40,8 +46,8 @@
                             <li class="active user-option"><a href="#makeRequest">Make Request</a></li>
                             <li class="user-option"><a href="#viewRequest">View Request</a></li>
                             <li class="user-option"><a href="#">Notification</a></li>
-                            <li class='tools'><a href="#">logout</a></li>
-                            <li class='tools' id='user'><a href="#"></a>welcome</a></li>
+                            <li class='tools'><a href="#" id='logout'>logout</a></li>
+                            <li class='tools' id='user'><a href="#"></a><span id= 'whologgedIn'></span></a></li>
 
                             
                         </ul>
@@ -114,6 +120,9 @@
         <script type='text/javascript' src="/socket.io/socket.io.js"></script>
         <script>
             let socket = io();
+            $('#whologgedIn').text(localStorage.getItem('message'))
+            $('#logout').click(()=>{localStorage.clear(); location.href = window.origin + '/page/login.html'});
+
         </script>
 </body>
 </html>
