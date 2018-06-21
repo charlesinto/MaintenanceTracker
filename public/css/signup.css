@@ -5,10 +5,29 @@
 div.signup-form{
     margin: 14% auto;
     background: #fff;
-    width:80%;
-    height:fit-content;
+    width: 80%;
+    height: fit-content;
     box-sizing: border-box;
     border-radius: 4px 4px;
+    position: absolute;
+    /* top: 2%; */
+    left: calc(calc(100vw - 80%) /2);
+    z-index: 1
+}
+div.blockUi{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background: rgba(0,0,0,.075);
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+}
+img#blockUi{
+    position: absolute;
+    /* top: calc(calc(100vh - 200px) / 2); */
+    margin-top:50px;
+    left: calc(calc(100vw - 200px) / 2);
 }
 input[type=password],input[type=email],input[type=text], input[type=submit]{
     display: inline-block;
@@ -19,6 +38,14 @@ input[type=password],input[type=email],input[type=text], input[type=submit]{
     border-radius: 4px;
     padding:7px 7px !important;
     box-sizing: border-box;
+}
+div#showMessage{
+    margin: 2% 12%;
+    text-align: center;
+    font-family: 'Hind Siliguri', sans-serif;;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 11px;
 }
 label {
     color: #000;
@@ -43,5 +70,6 @@ input[type=submit]{
     div.signup-form{
         width:50%;
         margin: 3% auto;
+        left: calc(calc(100vw - 50%) / 2);
      }
 }

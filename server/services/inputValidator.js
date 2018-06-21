@@ -6,7 +6,7 @@ let inputValidator = function(res, obj){
         let keys = Object.keys(obj)
         for(let i = 0; i< keys.length; i++){
             if(keys[i] === 'firstname' || keys[i] === 'lastname'){
-                if( typeof obj[keys[i]] === undefined || obj[keys[i]] === '' || /[?%$#@!`-\d]/.test(obj[keys[i]])){
+                if( typeof obj[keys[i]] === undefined || obj[keys[i]] === '' || /[@!#$%^&*()\d~`<>?":{}+=?/]/i.test(obj[keys[i]])){
                     res.statusCode = 400;
                     res.setHeader('content-type', 'application/json');
                     res.json({message:`${keys[i]}  required and no special character allowed`});

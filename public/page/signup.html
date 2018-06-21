@@ -26,13 +26,21 @@
             <label>Password</label>
             <input type='password' name='pwd' placeholder="Enter Password">
             <label>Confirm Password</label>
-            <input type='password' name='pwd' placeholder="Enter Password">
-            <input type='submit' value='Sign Up'>
+            <input type='password' name='pwd2' placeholder="Enter Password">
+            <div id="showMessage"></div>
+            <input type='submit' onclick="return false" value='Sign Up'>
         </form>
+    </div>
+    <div class = 'blockUi'>
+        <div class='loader'>
+            <img src='/asset/loader_spin.svg' id="blockUi">
+        </div>
+        
     </div>
     <script type='text/javascript' src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
+        
     </script>
 </body>
 </html>

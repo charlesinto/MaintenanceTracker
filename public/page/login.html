@@ -31,11 +31,11 @@
             <div class='user-form'>
                     <form>
                         <label>Email</label><br>
-                        <input type="email" placeholder="Enter email"><br>
+                        <input type="email" name="email" placeholder="Enter email"><br>
                         <label>Password</label><br>
-                        <input type="password" placeholder="Enter password"><br>
-                        <input type="submit" value="Login"><br>
-                        <input type="submit" id= "signup" value="Sign up">
+                        <input type="password" name="pwd" placeholder="Enter password"><br>
+                        <input type="submit" onclick='return false' value="Login"><br>
+                        <input type="submit" onclick='return false' id= "signup" value="Sign up">
                     </form>
             </div>
             <div class='recover-password'>
@@ -45,9 +45,16 @@
         </div>
          
     </div>
+    <div class = 'blockUi'>
+        <div class='loader'>
+            <img src='/asset/loader_spin.svg' id="blockUi">
+        </div>
+            
+    </div>
     <script type='text/javascript' src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
+        
     </script>
 </body>
 </html>
