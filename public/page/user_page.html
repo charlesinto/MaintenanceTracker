@@ -35,8 +35,8 @@
                         </nav>
                         <nav class='user-tools'>
                                 <ul class='m-tools'>
-                                        <li class='tools'><a href="#" id='logout'>logout</a></li>
-                                        <li class='tools' id='user'><a href="#"><span id= 'whologgedIn'></span></a></li>
+                                        <li class='tools logout'><a href="#">logout</a></li>
+                                        <li class='tools' id='user'><span class = 'whologgedIn'></span></li>
                                 </ul>
                         </nav>
             </div>
@@ -46,8 +46,8 @@
                             <li class="active user-option"><a href="#makeRequest">Make Request</a></li>
                             <li class="user-option"><a href="#viewRequest">View Request</a></li>
                             <li class="user-option"><a href="#">Notification</a></li>
-                            <li class='tools'><a href="#" id='logout'>logout</a></li>
-                            <li class='tools' id='user'><a href="#"></a><span id= 'whologgedIn'></span></a></li>
+                            <li class='tools logout'><a href="#">logout</a></li>
+                            <li class='tools' id='user'><span class = 'whologgedIn'></span></a></li>
 
                             
                         </ul>
@@ -81,21 +81,20 @@
                     <thead>
                         <tr>
                             <th>s/n</th>
+                            <th>Request Id</th>
                             <th>Product</th>
                             <th>Action</th>
                         </tr>
                         
                     </thead>
                     <tbody>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                     </tbody>
                 </table>
                 <table class='desktop-table'>
                         <thead>
                             <tr>
                                 <th>s/n</th>
+                                <th>Request Id</th>
                                 <th>Product</th>
                                 <th>Complaints</th>
                                 <th>Date Created</th>
@@ -105,23 +104,64 @@
                             
                         </thead>
                         <tbody>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                         </tbody>
                     </table>
             </div>
         </div>
     </div>
-    
+    <div class="modal" id="modal-one" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h2>Request Details</h2>
+            <a href="#" class="btn-close close" aria-hidden="true">×</a>
+          </div>
+          <div class="modal-body">
+            <div class = 'request-detail'>
+                <div class="mod-body mod-header">
+                        <div class = "modal-detail" >Request Id</div>
+                        <div class = "modal-detail">Product</div>
+                        <div class = "modal-detail">Complaints</div>
+                        <div class = "modal-detail">Status</div>
+                        <div class = "modal-detail">Date Created</div>
+                </div>
+                <div class='mod-body info'>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn close">Ok</a>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <!-- <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
+          </div>
+          
+        </div>
+      </div>
+    <div class = 'blockUi'>
+            <div class='loader'>
+                <img src='/asset/loader_spin.svg' id="blockUi">
+            </div>
+    </div>
         <script type='text/javascript' src="/socket.io/socket.io.js"></script>
         <script>
             let socket = io();
-            $('#whologgedIn').text(localStorage.getItem('message'))
-            $('#logout').click(()=>{localStorage.clear(); location.href = window.origin + '/page/login.html'});
+            $('.whologgedIn').text(localStorage.getItem('message'));
+            $('.logout').click(()=>{localStorage.clear(); location.href = window.origin + '/page/login.html'});
 
         </script>
 </body>
