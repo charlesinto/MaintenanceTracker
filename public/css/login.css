@@ -148,6 +148,7 @@ div.label{
     font-size: 15px;
     font-weight: 900;
     margin: 3% calc(37%);
+    width:100%;
 }
 @media screen and (min-width:700px){
     div.label{

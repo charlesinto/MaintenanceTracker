@@ -16,14 +16,17 @@ router.get('/requests', verifyToken,(req,res)=>{
         let sql = 'SELECT * FROM BASE_REQUEST WHERE user_id = $1';
         executeQuery(sql,[loggedInUser.id])
         .then((result)=>{
-            res.statusCode = 200;
-            res.setHeader('content-type', 'application/json');
+           
             if(result.rowCount > 0){
+                res.statusCode = 200;
+                res.setHeader('content-type', 'application/json');
                 res.json({
                     message:`operation successful`,
                     requests:result.rows
                 })
             }else{
+                res.statusCode = 404;
+                res.setHeader('content-type', 'application/json');
                 res.json({
                     message:'No record found',
                     requests:result.rows
