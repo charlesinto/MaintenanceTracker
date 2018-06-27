@@ -168,10 +168,12 @@ label{
     font-weight: 900;
     padding:10px;
 }
-div.recover-password{
-    width:80%;
-    margin:2% auto;
-}
+    div.recover-password {
+        width: 100%;
+        margin: 2% auto;
+        text-align: center;
+    }
+
 /* @media screen and (min-width:700px){
     div.recover-password{
         margin:2% auto;

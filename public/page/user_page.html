@@ -12,33 +12,51 @@
     <script src = '/js/jquery-3.2.1.min.js'></script>
     <script src = '/js/bootstrap.min.js'></script>
     <link rel='stylesheet' href="/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri+Inconsolata" rel="stylesheet">
     <script src ='/js/user_page.js'></script>
     
     <link rel = 'stylesheet' href = '/css/user_page.css' />
     <title>Maintenace Tracker</title>
+   
 </head>
 <body>
+    <script>
+        $('.view-request').hide();
+    </script>
     <div class= 'body'>
         <div class="menu mobile">
+            <div style="float:left; width:50%">
                     <nav class='nav-bar'><img id='m-icon'src='/asset/menu-icon.png' width="30px", height="30px" alt="menu"/><span class='m-menu'>Menu</span>
-                            <ul class='mobile-menu'>
-                                <li class="active user-option"><a href="#makeRequest">Make Request</a></li>
-                                <li class="user-option"><a href="#viewRequest">View Request</a></li>
-                                <li class="user-option"><a href="#">Notification</a></li>
-                                <!-- <li class='tools'><a href="#">logout</a></li>
-                                <li class='tools' id='user'><a href="#">welcome</a></li> -->
-        
-                                
-                            </ul>
+                        <ul class='mobile-menu operation-menu'>
+                            <li class="active user-option"><a href="#makeRequest">Make Request</a></li>
+                            <li class="user-option"><a href="#viewRequest">View Request</a></li>
+                            <li class="user-option"><a href="#">Notification</a></li>
+                            <!-- <li class='tools'><a href="#">logout</a></li>
+                            <li class='tools' id='user'><a href="#">welcome</a></li> -->
+    
                             
-                        </nav>
-                        <nav class='user-tools'>
-                                <ul class='m-tools'>
-                                        <li class='tools logout'><a href="#">logout</a></li>
-                                        <li class='tools' id='user'><span class = 'whologgedIn'></span></li>
-                                </ul>
-                        </nav>
+                        </ul>
+                        
+                    </nav>
+            </div>
+
+            <div style="float:left; width:50%">
+                <div class = 'user-tools'>
+                    <img id='profile-log' src = '/asset/black-logout.png' width:'24px' height="24px" />
+                    <div class='profile-menu' hidden style="float:right">
+                            <nav class='user-tools profile'>
+                                    <ul class='mobile-menu'>
+                                            <li class='' id='user'><span class = 'whologgedIn'></span></li>
+                                            <li class=' logout'><a href="#">logout</a></li>
+                                    </ul>
+                            </nav>
+                    </div>
+                </div>
+                
+                    
+            </div>
+                    
+                       
             </div>
         <div class="menu desktop">
                 <nav class='nav-bar'>
@@ -58,29 +76,28 @@
                 <form method='POST' action= '' onsubmit='return false'>
                     <label>Request Category</label>
                     <select name='requestCategory'>
-                        <option  value='repairs'>Repairs</option>
-                        <option  value='repairs'>Maintenance</option>
+                            <option  value=''>Select Item</option>
+                        <option  value='Repairs'>Repairs</option>
+                        <option  value='Maintenace'>Maintenance</option>
                     </select>
                     <label>Item Category</label>
-                    <select name='itemCategory'>
-                        <option  value='repairs'>Electronics</option>
-                        <option  value='repairs'>Machines</option>
+                    <select name='itemcategory'>
+                            <option  value=''>Select Item</option>
                     </select>
                     <label>Item</label>
-                    <select name='itemCategory'>
-                        <option  value='repairs'>Phone</option>
-                        <option  value='repairs'>AC</option>
+                    <select name='item'>
+                            <option  value=''>Select Item</option>
                     </select>
                     <label>Enter complaints</label>
                     <textarea id='userComplaints' name='complain'placeholder="Enter Complaints"></textarea>
                     <input type="submit" value='log Request'>
                 </form>
             </div>
-            <div class='menu-item view-request' hidden id='viewRequest' style='height: 300px'>
+            <div hidden class='menu-item view-request' id='viewRequest' style='height: 300px'>
                 <table class='mobile-table'>
                     <thead>
                         <tr>
-                            <th>s/n</th>
+                            <th>S/N</th>
                             <th>Request Id</th>
                             <th>Product</th>
                             <th>Action</th>
@@ -120,7 +137,6 @@
                 <div class="mod-body mod-header">
                         <div class = "modal-detail" >Request Id</div>
                         <div class = "modal-detail">Product</div>
-                        <div class = "modal-detail">Complaints</div>
                         <div class = "modal-detail">Status</div>
                         <div class = "modal-detail">Date Created</div>
                 </div>
@@ -157,6 +173,7 @@
                 <img src='/asset/loader_spin.svg' id="blockUi">
             </div>
     </div>
+        
         <script type='text/javascript' src="/socket.io/socket.io.js"></script>
         <script>
             let socket = io();
