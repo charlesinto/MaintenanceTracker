@@ -88,6 +88,7 @@ let callServer = function(request){
             console.log('dt',data)
             localStorage.setItem('token', data.token);
             localStorage.setItem('message',data.message);
+            localStorage.setItem('role_id',`${data.role}`);
             $('div.blockUi').hide();
             location.href = window.origin + '/page/user_page.html'
         }else{

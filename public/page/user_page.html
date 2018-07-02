@@ -4,6 +4,16 @@
     <script>
         if(!localStorage.getItem('token')){
             location.href = window.origin + '/page/login.html'
+        }else{
+            switch(localStorage.getItem('role_id')){
+                case '1':
+                    document.getElementsByClassName('make-request')[0].style.display = 'none';
+                break;
+                case '2':
+                break;
+                default:
+                  console.log('please identify yourself');
+            }
         }
     </script>
     <meta charset="UTF-8">
@@ -20,10 +30,12 @@
    
 </head>
 <body>
-    <script>
-        $('.view-request').hide();
-    </script>
-    <div class= 'body'>
+    <div class = 'preloader'>
+            <div class='loader-home'>
+                <img src='/asset/home-load.svg' id="blockUi">
+            </div>
+    </div>
+    <div class= 'body' hidden>
         <div class="menu mobile">
             <div style="float:left; width:50%">
                     <nav class='nav-bar'><img id='m-icon'src='/asset/menu-icon.png' width="30px", height="30px" alt="menu"/><span class='m-menu'>Menu</span>
@@ -126,6 +138,108 @@
             </div>
         </div>
     </div>
+    <div class = 'adminPage' hidden>
+        <div class="menu mobile">
+                <div style="float:left; width:50%">
+                        <nav class='nav-bar'><img id='m-icon'src='/asset/menu-icon.png' width="30px", height="30px" alt="menu"/><span class='m-menu'>Menu</span>
+                            <ul class='mobile-menu operation-menu'>
+                                <li class="active user-option"><a href="#home">Home</a></li>
+                                <li class="user-option"><a href="#users">View Users</a></li>
+                                <!-- <li class='tools'><a href="#">logout</a></li>
+                                <li class='tools' id='user'><a href="#">welcome</a></li> -->
+        
+                                
+                            </ul>
+                            
+                        </nav>
+                </div>
+    
+                <div style="float:left; width:50%">
+                    <div class = 'user-tools'>
+                        <img id='profile-log' src = '/asset/black-logout.png' width:'24px' height="24px" />
+                        <div class='profile-menu' hidden style="float:right">
+                                <nav class='user-tools profile'>
+                                        <ul class='mobile-menu'>
+                                                <li class='' id='user'><span class = 'whologgedIn'></span></li>
+                                                <li class=' logout'><a href="#">logout</a></li>
+                                        </ul>
+                                </nav>
+                        </div>
+                    </div>
+                    
+                        
+                </div>
+                        
+                            
+        </div>
+        <div class="menu desktop">
+                <nav class='nav-bar'>
+                        <ul>
+                            <li class="active user-option"><a href="#home">Requests</a></li>
+                            <li class="user-option"><a href="#viewUsers">View users</a></li>
+                            <li class='tools logout'><a href="#">logout</a></li>
+                            <li class='tools' id='user'><span class = 'whologgedIn'></span></a></li>
+
+                            
+                        </ul>
+                    </nav>
+        </div>
+        <div class = 'preloader adminLoader customLoader'>
+                <div class='loader-home'>
+                    <img src='/asset/home-load.svg' id="blockUi">
+                </div>
+        </div>
+        <div class='request-body'>
+                <div class = 'admin-body'>
+                    <div class='admin-table'>
+                        <div>
+                            <form class="admin-form" onsubmit="return false">
+                                    <label>Request Category</label>
+                                    <select name='admin-requestCategory'>
+                                            <option  value=''>Select Item</option>
+                                        <option  value='Repairs'>Repairs</option>
+                                        <option  value='Maintenace'>Maintenance</option>
+                                    </select>
+                                    <label>Request Id</label>
+                                    <input type="text" name="request_id">
+                                    <input type="button" value="Search">
+                            </form>
+                        </div>
+                        <table class = 'small-screen'>
+                            <thead>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Request Id</th>
+                                    <th>Product</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <table class = 'big-screen' hidden>
+                            <thead>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Request Id</th>
+                                    <th>Request Category</th>
+                                    <th>Product</th>
+                                    <th>Complaint</th>
+                                    <th>Status</th>
+                                    <th>Date Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>          
+        </div>
+        
+    </div>
     <div class="modal" id="modal-one" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-header">
@@ -168,7 +282,7 @@
           
         </div>
       </div>
-    <div class = 'blockUi'>
+    <div class = 'blockUi pageLoad'>
             <div class='loader'>
                 <img src='/asset/loader_spin.svg' id="blockUi">
             </div>
@@ -179,7 +293,7 @@
             let socket = io();
             $('.whologgedIn').text(localStorage.getItem('message'));
             $('.logout').click(()=>{localStorage.clear(); location.href = window.origin + '/page/login.html'});
-
+            
         </script>
 </body>
 </html>

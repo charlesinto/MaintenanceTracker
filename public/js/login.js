@@ -51,6 +51,7 @@ let callServer = function(request){
         if (status === 200){
             localStorage.setItem('token', data.token);
             localStorage.setItem('message',`welcome ${data.user}`);
+            localStorage.setItem('role_id',`${data.role}`);
             $('div.blockUi').hide();
             location.href = window.origin + '/page/user_page.html'
         }else{
