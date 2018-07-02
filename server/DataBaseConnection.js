@@ -31,18 +31,18 @@ else if(process.env.NODE_ENV === 'TEST'){
     });
  }
 else if (process.env.NODE_ENV === 'PRODUCTION'){
-    // let conDb = 'postgres://jchegnjhbpztbl:80ddd4918f6d9897bc94ffd66995759c23f1bec43dab5ab01f2ab0642d478513@ec2-54-225-107-174.compute-1.amazonaws.com:5432/d1h9n7k7aok7gd'
-    // pool = new pg.Pool({
-    //     connectionString:conDb, ssl:true
-    // }); 
-    const config = {
-        user: 'jchegnjhbpztbl',
-        database: 'd1h9n7k7aok7gd', 
-        password: '80ddd4918f6d9897bc94ffd66995759c23f1bec43dab5ab01f2ab0642d478513', 
-        port: 5432, 
-        max: 20, // max number of connection can be open to database
-        idleTimeoutMillis: 50000,
-    };
-    pool = new pg.Pool(config);
+   // let conDb = 'postgres://jchegnjhbpztbl:80ddd4918f6d9897bc94ffd66995759c23f1bec43dab5ab01f2ab0642d478513@ec2-54-225-107-174.compute-1.amazonaws.com:5432/d1h9n7k7aok7gd'
+    pool = new pg.Pool({
+        connectionString:process.env.DATABASE_URL, ssl:true
+    }); 
+    // const config = {
+    //     user: 'jchegnjhbpztbl',
+    //     database: 'd1h9n7k7aok7gd', 
+    //     password: '80ddd4918f6d9897bc94ffd66995759c23f1bec43dab5ab01f2ab0642d478513', 
+    //     port: 5432, 
+    //     max: 20, // max number of connection can be open to database
+    //     idleTimeoutMillis: 50000,
+    // };
+    // pool = new pg.Pool(config);
 }
 export default pool;
