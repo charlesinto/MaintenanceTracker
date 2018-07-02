@@ -40,9 +40,9 @@ if (process.env.NODE_ENV === 'DEVELOPMENT') {
         connectionString: TEST_DB, ssl: true
     });
 } else if (process.env.NODE_ENV === 'PRODUCTION') {
-    console.log('using online', process.env.DATABASE_URL);
+    var conDb = 'postgres://jchegnjhbpztbl:80ddd4918f6d9897bc94ffd66995759c23f1bec43dab5ab01f2ab0642d478513@ec2-54-225-107-174.compute-1.amazonaws.com:5432/d1h9n7k7aok7gd';
     pool = new _pg2.default.Pool({
-        connectionString: process.env.DATABASE_URL, ssl: true
+        connectionString: conDb, ssl: true
     });
 }
 exports.default = pool;
