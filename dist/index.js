@@ -28,9 +28,17 @@ var _index = require('./routes/index');
 
 var _index2 = _interopRequireDefault(_index);
 
+var _Uers = require('./routes/Uers');
+
+var _Uers2 = _interopRequireDefault(_Uers);
+
 var _loginSignup = require('./routes/loginSignup');
 
 var _loginSignup2 = _interopRequireDefault(_loginSignup);
+
+var _Admin = require('./routes/Admin');
+
+var _Admin2 = _interopRequireDefault(_Admin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,14 +53,24 @@ app.use(_bodyParser2.default.urlencoded({ extended: false }));
 app.use(_bodyParser2.default.json());
 
 app.use('/', _index2.default);
-
+//login and sign up route
 app.use('/api/v1/auth', _loginSignup2.default);
+//user routes
+app.use('/api/v1/users', _Uers2.default);
+app.use('/api/v1/user', _Uers2.default);
+
+//admin routes 
+app.use('/api/v1/requests', _Admin2.default);
 //create server;
 var port = process.env.PORT || 5000;
 var server = _http2.default.createServer(app);
 var io = (0, _socket2.default)().listen(server);
 io.on('connection', function (socket) {
     console.log('user connected, id: ' + socket.id);
+    //when update of status is made
+    socket.on('updateStatus', function (msg) {
+        socket.broadcast.emit('updateStatus', msg);
+    });
 });
 
 server.listen(port, function () {

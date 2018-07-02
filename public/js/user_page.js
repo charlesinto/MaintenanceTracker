@@ -139,6 +139,7 @@ let postRequest = function(){
     .then((res)=>{window.status = res.status; return res.json()})
     .then((data)=>{
         if(typeof window.status !== "undefined" || window.status === 201){
+            alert('Request Posted Successfully')
             getUserRequest();
         }
     })
@@ -232,6 +233,7 @@ let getUserRequest = function(){
         $('div.pageLoad').hide();
         switch(window.status){
             case '200':
+
                 let obj = data.requests
                 if(typeof obj !== "undefined" && obj.length > 0){
                     window.request = obj
