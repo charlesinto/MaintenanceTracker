@@ -14,6 +14,7 @@ var connectToDb = function connectToDb() {
     return new Promise(function (resolve, reject) {
         _DataBaseConnection2.default.connect(function (err, client, done) {
             if (err) {
+                console.log('err', err);
                 reject(err);
             } else {
                 resolve(client, done);

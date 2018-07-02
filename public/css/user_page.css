@@ -162,7 +162,7 @@ div.body{
 }
 .loader-home, .loader{
     top: calc(50% - 200px);
-    position: absolute;
+    position: fixed;
 }
 img#blockUi{
     position: absolute;
@@ -379,6 +379,18 @@ form.admin-form lablel{
 form.admin-form select{
     width: 146px !important;
     padding: 2px;
+}
+div.menu-item textarea, div.menu-item select, div.menu-item input[type=submit]{
+    display: inline-block;
+    width: 80%;
+    margin: 1% 7% !important;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+div.menu-item label{
+    margin: 1% 7% !important;
 }
 textarea,select, input[type=submit]{
     display: inline-block;

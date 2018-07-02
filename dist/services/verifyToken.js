@@ -13,6 +13,7 @@ var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var veryifyToken = function veryifyToken(req, res, next) {
+    var token = process.env.SECRET_KEY || 'brillianceisevenlydistributed';
     var bearerHeader = req.body.token || req.headers['authorization'];
 
     if (!bearerHeader) {
@@ -20,15 +21,13 @@ var veryifyToken = function veryifyToken(req, res, next) {
             message: 'Unauthorized user'
         });
     } else if ((typeof bearerHeader === 'undefined' ? 'undefined' : _typeof(bearerHeader)) !== undefined) {
-        _jsonwebtoken2.default.verify(bearerHeader, process.env.SECRET_KEY, function (err, authData) {
-
+        _jsonwebtoken2.default.verify(bearerHeader, token, function (err, authData) {
             if (err) {
                 res.status(403).send({
                     message: "Forbidden access"
                 });
             }
             req.token = authData;
-            //console.log(req.token);
             next();
         });
     }

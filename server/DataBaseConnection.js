@@ -32,7 +32,7 @@ else if(process.env.NODE_ENV === 'TEST'){
  }
 else if (process.env.NODE_ENV === 'PRODUCTION'){
     pool = new pg.Pool({
-        connectionString:process.env.DATABSE_URL, ssl:true
-    });
+        connectionString:process.env.DATABASE_URL, ssl:true
+    }); 
 }
 export default pool;
