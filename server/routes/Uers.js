@@ -167,12 +167,26 @@ router.post('/request',verifyToken,(req,res)=>{
             let sql = 'INSERT INTO BASE_REQUEST(requestcategory,item, itemcategory,complaints, user_id, status, datecreated) values ($1,$2,$3,$4,$5,$6,$7)';
             executeQuery(sql,[request.requestcategory,request.item,request.itemcategory, request.complaints,user.id,'PENDING','NOW()'])
             .then((result)=>{
-                res.statusCode = 201;
+                
+                let sql = 'SELECT * FROM BASE_REQUEST WHERE datecreated = (SELECT MAX(datecreated) FROM BASE_REQUEST WHERE user_id = $1)';
+                executeQuery(sql,[user.id])
+                .then((result)=>{
+                    res.statusCode = 201;
                         res.setHeader('content-type', 'application/json');
                         return res.json({
                             message:`operation successful`,
-                            request
-                        }) 
+                            request,
+                            newRequest: result.rows
+                        })
+                }) 
+                .catch((err)=>{
+                    res.statusCode = 400;
+                    res.setHeader('content-type', 'application/json');
+                    res.json({
+                        message:'couldnt perform action',
+                        err
+                    })
+                    })        
             })
             .catch((err)=>{
                 res.statusCode = 400;

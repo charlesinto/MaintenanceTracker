@@ -35,15 +35,6 @@ else{
     pool = new pg.Pool({
         connectionString:conDb, ssl:true
     }); 
-    // const config = {
-    //     user: 'jchegnjhbpztbl',
-    //     database: 'd1h9n7k7aok7gd', 
-    //     password: '80ddd4918f6d9897bc94ffd66995759c23f1bec43dab5ab01f2ab0642d478513', 
-    //     port: 5432, 
-    //     max: 20, // max number of connection can be open to database
-    //     idleTimeoutMillis: 50000,
-    // };
-    // pool = new pg.Pool(config);
     console.log('ev', process.env.DATABASE_URL);
 }
 export default pool;
