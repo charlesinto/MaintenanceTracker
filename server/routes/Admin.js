@@ -7,13 +7,13 @@ import validateKey from '../services/validateKeys';
 import inputValidate from '../services/inputValidator';
 import executeQuery from '../services/queryExecutor';
 import bcrypt from 'bcrypt';
-const ADMIN_ROLE = 1
+const ADMIN_ROLE = 2
 let router = express.Router();
 
 router.get('/', verifyToken, (req,res)=>{
     if(typeof req.token !== "undefined" && req.token !== ''){
         let user = req.token;
-        if(!(user.role_id === ADMIN_ROLE)){
+        if(!(user.role_id == ADMIN_ROLE)){
             res.statusCode = 400;
             res.setHeader('content-type', 'application/json');
             return res.json({
@@ -50,7 +50,7 @@ router.put('/:id/resolve', verifyToken, (req,res)=>{
         .then((result)=>{
             if(result.rowCount > 0){
                 if(result.rows[0].status === 'REJECTED'){
-                    res.statusCode = 403;
+                    res.statusCode = 406;
                     res.setHeader('content-type','application/json');
                     return res.json({
                         message:'can perform operation'

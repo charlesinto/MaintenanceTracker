@@ -25,13 +25,14 @@ router.post('/login',(req,res)=>{
         .then((result)=>{
             if(result.rowCount > 0){
                 if(bcrypt.compareSync(request.password,result.rows[0].password)){
-                    assignToken({id:result.rows[0].id,firstname:result.rows[0].firstname,lastname:result.rows[0].lastname,role_id:1,email:result.rows[0].email})
+                    assignToken({id:result.rows[0].id,firstname:result.rows[0].firstname,lastname:result.rows[0].lastname,role_id:result.rows[0].role_id,email:result.rows[0].email})
                     .then((token)=>{
                         res.statusCode = 200;
                         res.setHeader('content-type', 'application/json');
                         return res.json({
                             message:`welcome`,
                             token,
+                            role: `${result.rows[0].role_id}`,
                             user:`${result.rows[0].firstname} ${result.rows[0].lastname}`
                         }) 
                     })
@@ -108,6 +109,7 @@ router.post('/signup',(req,res)=>{
                                 res.setHeader('content-type', 'application/json');
                                 res.json({
                                     message:`welcome ${request.firstname} ${request.lastname}`,
+                                    role: `${result.rows[0].role_id}`,
                                     token
                                 })
                                 

@@ -32,6 +32,10 @@ let server = http.createServer(app)
 let io = socket().listen(server);
 io.on('connection', (socket)=>{
     console.log(`user connected, id: ${socket.id}`);
+    //when update of status is made
+    socket.on('updateStatus',function(msg){
+        socket.broadcast.emit('updateStatus',msg);
+    })
 })
 
 server.listen(port,()=>{console.log(`server is listening on port ${port}`)});
