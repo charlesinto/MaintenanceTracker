@@ -138,8 +138,10 @@ let postRequest = function(){
     })
     .then((res)=>{window.status = res.status; return res.json()})
     .then((data)=>{
+        console.log('nr',data.newRequest)
         if(typeof window.status !== "undefined" || window.status === 201){
             alert('Request Posted Successfully')
+            socket.emit('newRequest',{message:'POST', request: data.newRequest});
             getUserRequest();
         }
     })
@@ -615,11 +617,24 @@ let updateStatus = function(id, target, status){
 let instantUpdateTable = function(){
     socket.on('updateStatus',function(msg){
         let cols = $('div.admin-table table.big-screen tbody tr').find('td.r_id')
+
+        let userCols = $('table.desktop-table tbody tr').find('td.r_id')
+        for(i=0; i<userCols.length;i++){
+            if(userCols[i].outerText == msg.requestId){
+                $('table.desktop-table tbody tr').eq(i).find('td div.label').text(msg.status);
+            }
+        }
         for(i = 0; i < cols.length ; i++){
             if(cols[i].outerText == msg.requestId){
                 $('div.admin-table table.big-screen tbody tr').eq(i).find('td div.label').text(msg.status)
             }
           }
         updateStatus(msg.requestId,'div.admin-table table.big-screen tbody tr',msg.status );
+        updateStatus(msg.requestId,'table.desktop-table tbody tr',msg.status)
+    })
+    socket.on('newRequest',function(msg){
+        console.log('new request', msg.request[0])
+        window.request.push(msg.request[0]);
+        setAdminTable();
     })
 }

@@ -185,11 +185,23 @@ router.post('/request', _verifyToken2.default, function (req, res) {
         if ((0, _inputValidator2.default)(res, request)) {
             var sql = 'INSERT INTO BASE_REQUEST(requestcategory,item, itemcategory,complaints, user_id, status, datecreated) values ($1,$2,$3,$4,$5,$6,$7)';
             (0, _queryExecutor2.default)(sql, [request.requestcategory, request.item, request.itemcategory, request.complaints, user.id, 'PENDING', 'NOW()']).then(function (result) {
-                res.statusCode = 201;
-                res.setHeader('content-type', 'application/json');
-                return res.json({
-                    message: 'operation successful',
-                    request: request
+
+                var sql = 'SELECT * FROM BASE_REQUEST WHERE datecreated = (SELECT MAX(datecreated) FROM BASE_REQUEST WHERE user_id = $1)';
+                (0, _queryExecutor2.default)(sql, [user.id]).then(function (result) {
+                    res.statusCode = 201;
+                    res.setHeader('content-type', 'application/json');
+                    return res.json({
+                        message: 'operation successful',
+                        request: request,
+                        newRequest: result.rows
+                    });
+                }).catch(function (err) {
+                    res.statusCode = 400;
+                    res.setHeader('content-type', 'application/json');
+                    res.json({
+                        message: 'couldnt perform action',
+                        err: err
+                    });
                 });
             }).catch(function (err) {
                 res.statusCode = 400;

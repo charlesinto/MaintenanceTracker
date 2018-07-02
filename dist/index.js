@@ -71,6 +71,9 @@ io.on('connection', function (socket) {
     socket.on('updateStatus', function (msg) {
         socket.broadcast.emit('updateStatus', msg);
     });
+    socket.on('newRequest', function (msg) {
+        socket.broadcast.emit('newRequest', msg);
+    });
 });
 
 server.listen(port, function () {
