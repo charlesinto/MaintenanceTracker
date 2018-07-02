@@ -44,5 +44,6 @@ else if (process.env.NODE_ENV === 'PRODUCTION'){
     //     idleTimeoutMillis: 50000,
     // };
     // pool = new pg.Pool(config);
+    console.log('ev', process.env.DATABASE_URL);
 }
 export default pool;
